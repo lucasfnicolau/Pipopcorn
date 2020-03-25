@@ -12,6 +12,8 @@ import UIKit
 class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +22,5 @@ class MovieTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }

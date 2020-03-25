@@ -6,8 +6,12 @@
 //  Copyright © 2020 Lucas Fernandez Nicolau. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class CellID {
     static let MOVIE_CELL = "MovieCell"
+}
+
+class Size {
+    static let MOVIE_CELL_H: CGFloat = 210
 }

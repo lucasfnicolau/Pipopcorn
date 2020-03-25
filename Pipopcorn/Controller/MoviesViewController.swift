@@ -13,10 +13,20 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameTextField: UITextField!
 
+    var movies = ["A","A","A","A","A","A"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextField()
         setTableView()
+    }
+
+    @IBAction func searchButtonTouched(_ sender: UIButton) {
+        guard let text = nameTextField.text,
+            text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
+        nameTextField.resignFirstResponder()
+        
+        // ...
     }
 
     func setTextField() {
@@ -34,24 +44,20 @@ class MoviesViewController: UIViewController {
     @objc func dismissKeyboard() {
         nameTextField.resignFirstResponder()
     }
-
-    @IBAction func searchButtonTouched(_ sender: UIButton) {
-        guard let text = nameTextField.text,
-            text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
-        nameTextField.resignFirstResponder()
-        
-        // ...
-    }
 }
 
 extension MoviesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return movies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return tableView.dequeueReusableCell(withIdentifier: CellID.MOVIE_CELL) as! MovieTableViewCell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Size.MOVIE_CELL_H
     }
 
 }
