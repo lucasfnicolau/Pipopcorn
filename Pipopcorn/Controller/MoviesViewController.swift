@@ -15,6 +15,8 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        let a = API_KEY
+
     }
 
     func setTableView() {
