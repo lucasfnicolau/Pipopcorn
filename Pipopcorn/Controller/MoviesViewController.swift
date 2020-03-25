@@ -14,11 +14,14 @@ class MoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        setTableView()
     }
 
+    func setTableView() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.tableFooterView = UIView(frame: .zero)
+    }
 }
 
 extension MoviesViewController: UITableViewDataSource {
