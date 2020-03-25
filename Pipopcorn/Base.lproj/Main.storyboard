@@ -113,7 +113,7 @@
                                             <outlet property="yearLabel" destination="uy2-H0-5KN" id="cDF-gp-9rn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell" rowHeight="210" id="tYS-Ko-lHH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoMovieCell" rowHeight="210" id="tYS-Ko-lHH" customClass="NoMovieTableViewCell" customModule="Pipopcorn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="238" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tYS-Ko-lHH" id="Idx-lJ-SvS">
@@ -135,6 +135,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="warningLabel" destination="Brc-wa-YkG" id="UuZ-Jj-yHa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

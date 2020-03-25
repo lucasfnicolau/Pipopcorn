@@ -13,8 +13,6 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameTextField: UITextField!
 
-    var movies = ["A","A","A","A","A","A"]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextField()
@@ -49,15 +47,15 @@ class MoviesViewController: UIViewController {
 extension MoviesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: CellID.MOVIE_CELL) as! MovieTableViewCell
+        return tableView.dequeueReusableCell(withIdentifier: CellID.NO_MOVIE_CELL) as! NoMovieTableViewCell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Size.MOVIE_CELL_H
+        return UIScreen.main.bounds.height * 0.7
     }
 
 }

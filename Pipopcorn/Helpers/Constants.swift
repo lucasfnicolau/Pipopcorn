@@ -10,6 +10,7 @@ import UIKit
 
 class CellID {
     static let MOVIE_CELL = "MovieCell"
+    static let NO_MOVIE_CELL = "NoMovieCell"
 }
 
 class Size {
