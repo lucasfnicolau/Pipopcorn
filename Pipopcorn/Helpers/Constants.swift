@@ -16,3 +16,7 @@ class CellID {
 class Size {
     static let MOVIE_CELL_H: CGFloat = 210
 }
+
+class Segue {
+    static let GO_TO_DETAILS = "GoToDetails"
+}

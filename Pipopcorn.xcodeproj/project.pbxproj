@@ -13,6 +13,7 @@
 		B6225D1A242BEFCD00A8331E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6225D18242BEFCD00A8331E /* Main.storyboard */; };
 		B6225D1C242BEFD200A8331E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6225D1B242BEFD200A8331E /* Assets.xcassets */; };
 		B6225D1F242BEFD200A8331E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6225D1D242BEFD200A8331E /* LaunchScreen.storyboard */; };
+		B634C6FF242D5F2400A33470 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B634C6FE242D5F2400A33470 /* DetailsTableViewController.swift */; };
 		B68AE5BC242C06DC0022A903 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68AE5BB242C06DC0022A903 /* Constants.swift */; };
 		B68AE5BE242C0B130022A903 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68AE5BD242C0B130022A903 /* MovieTableViewCell.swift */; };
 		B68AE5C0242C100E0022A903 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68AE5BF242C100E0022A903 /* Extensions.swift */; };
@@ -30,6 +31,7 @@
 		B6225D1B242BEFD200A8331E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6225D1E242BEFD200A8331E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6225D20242BEFD200A8331E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B634C6FE242D5F2400A33470 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
 		B68AE5BB242C06DC0022A903 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B68AE5BD242C0B130022A903 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		B68AE5BF242C100E0022A903 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				B6225D16242BEFCD00A8331E /* MoviesViewController.swift */,
+				B634C6FE242D5F2400A33470 /* DetailsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				B68AE5BE242C0B130022A903 /* MovieTableViewCell.swift in Sources */,
 				B68AE5C0242C100E0022A903 /* Extensions.swift in Sources */,
 				B6225D13242BEFCD00A8331E /* AppDelegate.swift in Sources */,
+				B634C6FF242D5F2400A33470 /* DetailsTableViewController.swift in Sources */,
 				B6C96656242C01230091E2CB /* APIKey.swift in Sources */,
 				B68AE5BC242C06DC0022A903 /* Constants.swift in Sources */,
 				B6225D15242BEFCD00A8331E /* SceneDelegate.swift in Sources */,
