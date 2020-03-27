@@ -20,15 +20,16 @@ class MoviesViewController: UIViewController {
     }
 
     @IBAction func searchButtonTouched(_ sender: UIButton) {
+        dismissKeyboard()
         guard let text = nameTextField.text,
             text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
-        nameTextField.resignFirstResponder()
         
         // ...
     }
 
     func setTextField() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         self.nameTextField.delegate = self
     }
@@ -60,7 +61,13 @@ extension MoviesViewController: UITableViewDataSource {
 
 }
 
-extension MoviesViewController: UITableViewDelegate { }
+extension MoviesViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // ...
+    }
+    
+}
 
 extension MoviesViewController: UITextFieldDelegate {
 

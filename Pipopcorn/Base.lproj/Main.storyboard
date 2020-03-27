@@ -390,7 +390,7 @@
                     <navigationItem key="navigationItem" title="Detalhes" id="zdc-NZ-zFP"/>
                     <connections>
                         <outlet property="directorLabel" destination="QLK-Fo-yI3" id="BtU-eI-Fjq"/>
-                        <outlet property="imdbRatingLabel" destination="7kI-xo-IwV" id="7Ug-4F-Gm1"/>
+                        <outlet property="imdbRatingLabel" destination="3lu-QA-klI" id="UX5-sr-c1h"/>
                         <outlet property="nameLabel" destination="2jh-Xi-cT2" id="TH6-b1-Cg4"/>
                         <outlet property="posterImageView" destination="KCb-tN-CGC" id="9Pi-CX-FeG"/>
                         <outlet property="ratingLabel" destination="Fxk-zh-obA" id="JFB-ga-I7o"/>
