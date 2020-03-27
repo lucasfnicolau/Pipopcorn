@@ -110,6 +110,7 @@
                                         <connections>
                                             <outlet property="containerView" destination="83l-IS-eKd" id="jmd-3i-zv3"/>
                                             <outlet property="nameLabel" destination="hPF-Xi-cQh" id="3Qq-NM-aBF"/>
+                                            <outlet property="posterImageView" destination="I1P-v6-VAT" id="zee-zD-9M5"/>
                                             <outlet property="yearLabel" destination="uy2-H0-5KN" id="cDF-gp-9rn"/>
                                         </connections>
                                     </tableViewCell>
