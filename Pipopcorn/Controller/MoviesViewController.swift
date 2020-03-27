@@ -43,6 +43,22 @@ class MoviesViewController: UIViewController {
     @objc func dismissKeyboard() {
         nameTextField.resignFirstResponder()
     }
+    
+    @IBAction func infoButtonTouched(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "OMDb API", message: "Todos os dados utilizados neste app foram consumidos utilizando a OMDb API", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+        let openLicense = UIAlertAction(title: "Licença da API", style: .default) { _ in
+            if let url = URL(string: "https://www.omdbapi.com/legal.htm") {
+                UIApplication.shared.open(url)
+            }
+        }
+
+        alertController.addAction(cancel)
+        alertController.addAction(openLicense)
+
+        navigationController?.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension MoviesViewController: UITableViewDataSource {

@@ -202,7 +202,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Filmes" id="ZFX-VA-VAf"/>
+                    <navigationItem key="navigationItem" title="Filmes" id="ZFX-VA-VAf">
+                        <barButtonItem key="rightBarButtonItem" image="info.circle" catalog="system" id="WG7-R7-MJG">
+                            <connections>
+                                <action selector="infoButtonTouched:" destination="BYZ-38-t0r" id="DF8-tS-Hk3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="ulg-VQ-OAG" id="Mwq-SS-hLp"/>
                         <outlet property="tableView" destination="L3o-2H-nj7" id="dIi-AB-5Cl"/>
@@ -422,6 +428,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
     </resources>
 </document>
