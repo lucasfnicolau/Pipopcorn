@@ -72,53 +72,20 @@ class MoviesViewController: UIViewController {
     @objc func dismissKeyboard() {
         nameTextField.resignFirstResponder()
     }
-}
 
-extension MoviesViewController: UITableViewDataSource {
+    @IBAction func infoButtonTouched(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "OMDb API", message: "Todos os dados utilizados neste app foram consumidos utilizando a OMDb API", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count > 0 ? movies.count : 1
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        if movies.isEmpty {
-            return tableView.dequeueReusableCell(withIdentifier: CellID.NO_MOVIE_CELL) as! NoMovieTableViewCell
+        let openLicense = UIAlertAction(title: "Licença da API", style: .default) { _ in
+            if let url = URL(string: "https://www.omdbapi.com/legal.htm") {
+                UIApplication.shared.open(url)
+            }
         }
 
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellID.MOVIE_CELL) as? MovieTableViewCell {
-            cell.setup(for: movies[indexPath.row])
-            return cell
-        }
+        alertController.addAction(cancel)
+        alertController.addAction(openLicense)
 
-        return UITableViewCell()
+        navigationController?.present(alertController, animated: true, completion: nil)
     }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.height * 0.7
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailsViewController = segue.destination as? DetailsTableViewController {
-            let selectedRow = tableView.indexPathForSelectedRow?.row ?? 0
-            detailsViewController.imdbID = movies[selectedRow].imdbID
-        }
-    }
-}
-
-extension MoviesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !movies.isEmpty {
-            performSegue(withIdentifier: Segue.GO_TO_DETAILS, sender: nil)
-        }
-    }
-}
-
-extension MoviesViewController: UITextFieldDelegate {
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchButtonTouched(UIButton())
-        return false
-    }
-
 }
