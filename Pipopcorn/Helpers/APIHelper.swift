@@ -40,8 +40,16 @@ class APIHelper {
         }
     }
 
-    func getMovieDetails(forId id: String) {
+    func getMovieDetails(forId id: String, completionHandler: @escaping (Result<MovieDetails, APIError>) -> Void) {
 
+        decodeJSON(for: .details, using: MovieDetails.self, andQuery: id) { result in
+            switch result {
+                case .success(let movieDetails):
+                    completionHandler(.success(movieDetails))
+                case .failure(let error):
+                    completionHandler(.failure(error))
+            }
+        }
     }
 
     private func decodeJSON<T: Codable>(for purpose: APIPurpose, using model: T.Type, andQuery query: String, completionHandler: @escaping (Result<T, APIError>) -> Void) {
@@ -49,7 +57,7 @@ class APIHelper {
         let urlPurpose = purpose.rawValue
         let queryString = formatToQueryString(query)
 
-        guard let url = URL(string: "\(ENDPOINT)=\(API_KEY)&\(urlPurpose)=\(queryString)"),
+        guard let url = URL(string: "\(ENDPOINT)=\(API_KEY)&\(urlPurpose)=\(queryString)&type=movie"),
               let data = try? Data(contentsOf: url) else {
                 completionHandler(.failure(.urlFetchError))
                 return

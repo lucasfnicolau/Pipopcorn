@@ -22,27 +22,29 @@ class MoviesViewController: UIViewController {
     }
 
     @IBAction func searchButtonTouched(_ sender: UIButton) {
+        dismissKeyboard()
         guard let text = nameTextField.text,
             text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
-        nameTextField.resignFirstResponder()
 
         let name = text.trimmingCharacters(in: .whitespacesAndNewlines)
 
         movies = []
         self.tableView.reloadData()
+        
         APIHelper.shared.searchMovies(named: name) { result in
             switch result {
-                case .success(let movies):
-                    self.movies = movies.filter { $0.type == .movie }
-                    self.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
+            case .success(let movies):
+                self.movies = movies
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
             }
         }
     }
 
     func setTextField() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         self.nameTextField.delegate = self
     }
@@ -51,7 +53,8 @@ class MoviesViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.tableFooterView = UIView(frame: .zero)
-        tableView.reloadData()
+        self.tableView.reloadData()
+        self.tableView.allowsSelection = true
     }
 
     @objc func dismissKeyboard() {
@@ -83,9 +86,21 @@ extension MoviesViewController: UITableViewDataSource {
         return UIScreen.main.bounds.height * 0.7
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailsViewController = segue.destination as? DetailsTableViewController {
+            let selectedRow = tableView.indexPathForSelectedRow?.row ?? 0
+            detailsViewController.imdbID = movies[selectedRow].imdbID
+        }
+    }
 }
 
-extension MoviesViewController: UITableViewDelegate { }
+extension MoviesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !movies.isEmpty {
+            performSegue(withIdentifier: Segue.GO_TO_DETAILS, sender: nil)
+        }
+    }
+}
 
 extension MoviesViewController: UITextFieldDelegate {
 

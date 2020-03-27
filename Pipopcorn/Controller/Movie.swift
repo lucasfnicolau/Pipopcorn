@@ -23,6 +23,4 @@ struct Movie: Codable {
 
 enum TypeEnum: String, Codable {
     case movie = "movie"
-    case series = "series"
-    case game = "game"
 }

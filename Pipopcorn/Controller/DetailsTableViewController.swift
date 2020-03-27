@@ -14,22 +14,38 @@ class DetailsTableViewController: UITableViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var directorLabel: UILabel!
-    @IBOutlet weak var imdbRatingLabel: UITableViewCell!
+    @IBOutlet weak var imdbRatingLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
+
+    var movieDetails: MovieDetails?
+    var imdbID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchMovieDetails()
     }
 
-    // MARK: - Table view data source
+    func fetchMovieDetails() {
+        DispatchQueue.main.async {
+            APIHelper.shared.getMovieDetails(forId: self.imdbID) { result in
+                switch result {
+                case .success(let movieDetails):
+                    self.movieDetails = movieDetails
+                    self.fillTableView()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+    func fillTableView() {
+        guard let movieDetails = movieDetails else { return }
+        nameLabel.text = movieDetails.title
+        releaseDateLabel.text = movieDetails.released
+        ratingLabel.text = movieDetails.rated
+        directorLabel.text = movieDetails.director
+        imdbRatingLabel.text = movieDetails.imdbRating
+        posterImageView.load(url: movieDetails.poster)
+    }
 }
