@@ -25,7 +25,8 @@ class MoviesViewController: UIViewController {
         guard let text = nameTextField.text,
             text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
         nameTextField.resignFirstResponder()
-        
+
+        movies = []
         APIHelper.shared.searchMovies(named: text) { result in
             switch result {
                 case .success(let movies):
