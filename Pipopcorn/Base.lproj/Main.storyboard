@@ -15,11 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L3o-2H-nj7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L3o-2H-nj7">
                                 <rect key="frame" x="0.0" y="168" width="414" height="728"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell" rowHeight="210" id="tSG-Dj-Eds" customClass="MovieTableViewCell" customModule="Pipopcorn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell" rowHeight="210" id="tSG-Dj-Eds" customClass="MovieTableViewCell" customModule="Pipopcorn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tSG-Dj-Eds" id="Aql-Do-K7o">
@@ -65,7 +65,7 @@
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1977" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy2-H0-5KN">
                                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="25"/>
-                                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -81,7 +81,7 @@
                                                                 <constraint firstAttribute="width" constant="60" id="U0C-Dk-tSb"/>
                                                                 <constraint firstAttribute="height" constant="25" id="wxg-ZB-q8e"/>
                                                             </constraints>
-                                                            <blurEffect style="regular"/>
+                                                            <blurEffect style="extraLight"/>
                                                         </visualEffectView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="0.7951359160958904" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,10 +110,11 @@
                                         <connections>
                                             <outlet property="containerView" destination="83l-IS-eKd" id="jmd-3i-zv3"/>
                                             <outlet property="nameLabel" destination="hPF-Xi-cQh" id="3Qq-NM-aBF"/>
+                                            <outlet property="posterImageView" destination="I1P-v6-VAT" id="ZLx-0R-E9E"/>
                                             <outlet property="yearLabel" destination="uy2-H0-5KN" id="cDF-gp-9rn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoMovieCell" rowHeight="210" id="tYS-Ko-lHH" customClass="NoMovieTableViewCell" customModule="Pipopcorn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoMovieCell" rowHeight="210" id="tYS-Ko-lHH" customClass="NoMovieTableViewCell" customModule="Pipopcorn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="238" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tYS-Ko-lHH" id="Idx-lJ-SvS">
@@ -358,22 +359,22 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Pôster" id="Xbb-gQ-86r">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="283" id="kXn-Rl-sfo">
-                                        <rect key="frame" x="0.0" y="525.5" width="414" height="283"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="800" id="kXn-Rl-sfo">
+                                        <rect key="frame" x="0.0" y="525.5" width="414" height="800"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kXn-Rl-sfo" id="jn7-Gg-wta">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="283"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KCb-tN-CGC">
-                                                    <rect key="frame" x="20" y="11" width="374" height="261"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KCb-tN-CGC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="KCb-tN-CGC" secondAttribute="bottom" id="Suw-vy-fJg"/>
-                                                <constraint firstItem="KCb-tN-CGC" firstAttribute="leading" secondItem="jn7-Gg-wta" secondAttribute="leadingMargin" id="gbT-sy-LJf"/>
-                                                <constraint firstItem="KCb-tN-CGC" firstAttribute="top" secondItem="jn7-Gg-wta" secondAttribute="topMargin" id="hgq-rL-j8j"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="KCb-tN-CGC" secondAttribute="trailing" id="kcx-J3-V2v"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="KCb-tN-CGC" secondAttribute="bottom" constant="-11" id="Suw-vy-fJg"/>
+                                                <constraint firstItem="KCb-tN-CGC" firstAttribute="leading" secondItem="jn7-Gg-wta" secondAttribute="leadingMargin" constant="-20" id="gbT-sy-LJf"/>
+                                                <constraint firstItem="KCb-tN-CGC" firstAttribute="top" secondItem="jn7-Gg-wta" secondAttribute="topMargin" constant="-11" id="hgq-rL-j8j"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="KCb-tN-CGC" secondAttribute="trailing" constant="-20" id="kcx-J3-V2v"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -389,7 +390,7 @@
                     <navigationItem key="navigationItem" title="Detalhes" id="zdc-NZ-zFP"/>
                     <connections>
                         <outlet property="directorLabel" destination="QLK-Fo-yI3" id="BtU-eI-Fjq"/>
-                        <outlet property="imdbRatingLabel" destination="7kI-xo-IwV" id="7Ug-4F-Gm1"/>
+                        <outlet property="imdbRatingLabel" destination="3lu-QA-klI" id="2Pe-F9-Egz"/>
                         <outlet property="nameLabel" destination="2jh-Xi-cT2" id="TH6-b1-Cg4"/>
                         <outlet property="posterImageView" destination="KCb-tN-CGC" id="9Pi-CX-FeG"/>
                         <outlet property="ratingLabel" destination="Fxk-zh-obA" id="JFB-ga-I7o"/>

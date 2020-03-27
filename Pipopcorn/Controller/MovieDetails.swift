@@ -11,6 +11,7 @@ import Foundation
 struct MovieDetails: Codable {
     let imdbID,
         title,
+        rated,
         released,
         director,
         imdbRating,
@@ -18,6 +19,7 @@ struct MovieDetails: Codable {
 
     enum CodingKeys: String, CodingKey {
         case title = "Title"
+        case rated  = "Rated"
         case released = "Released"
         case director = "Director"
         case poster = "Poster"
