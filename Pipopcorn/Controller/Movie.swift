@@ -9,9 +9,8 @@
 import Foundation
 
 struct Movie: Codable {
-    let title, year, imdbID: String
+    let imdbID, title, year, poster: String
     let type: TypeEnum
-    let poster: String
 
     enum CodingKeys: String, CodingKey {
         case title = "Title"

@@ -13,14 +13,43 @@ enum APIError: Error {
     case jsonDecodeError
 }
 
+enum APIPurpose: String {
+    case search = "s"
+    case details = "i"
+}
+
 class APIHelper {
-    let shared = APIHelper()
+
+    let ENDPOINT = "https://www.omdbapi.com/?apikey"
+    static let shared = APIHelper()
 
     private init() { }
 
-    func decodeJSON<T: Codable>(fromURL url: String, for model: T.Type, completionHandler: @escaping (Result<T, APIError>) -> Void) {
+    func formatToQueryString(_ string: String) -> String {
+        return string.components(separatedBy: " ").joined(separator: "%20")
+    }
 
-        guard let url = URL(string: url),
+    func searchMovies(named name: String, completionHandler: @escaping (Result<[Movie], APIError>) -> Void) {
+        decodeJSON(for: .search, using: Search.self, andQuery: name) { result in
+            switch result {
+                case .success(let search):
+                    completionHandler(.success(search.movies))
+                case .failure(let error):
+                    completionHandler(.failure(error))
+            }
+        }
+    }
+
+    func getMovieDetails(forId id: String) {
+
+    }
+
+    private func decodeJSON<T: Codable>(for purpose: APIPurpose, using model: T.Type, andQuery query: String, completionHandler: @escaping (Result<T, APIError>) -> Void) {
+
+        let urlPurpose = purpose.rawValue
+        let queryString = formatToQueryString(query)
+
+        guard let url = URL(string: "\(ENDPOINT)=\(API_KEY)&\(urlPurpose)=\(queryString)"),
               let data = try? Data(contentsOf: url) else {
                 completionHandler(.failure(.urlFetchError))
                 return

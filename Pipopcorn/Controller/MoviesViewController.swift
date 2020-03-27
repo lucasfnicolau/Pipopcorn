@@ -13,6 +13,8 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameTextField: UITextField!
 
+    var movies = [Movie]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextField()
@@ -24,7 +26,15 @@ class MoviesViewController: UIViewController {
             text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
         nameTextField.resignFirstResponder()
         
-        // ...
+        APIHelper.shared.searchMovies(named: text) { result in
+            switch result {
+                case .success(let movies):
+                    self.movies = movies
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+            }
+        }
     }
 
     func setTextField() {
@@ -37,6 +47,7 @@ class MoviesViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.tableFooterView = UIView(frame: .zero)
+        tableView.reloadData()
     }
 
     @objc func dismissKeyboard() {
@@ -47,11 +58,21 @@ class MoviesViewController: UIViewController {
 extension MoviesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return movies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: CellID.NO_MOVIE_CELL) as! NoMovieTableViewCell
+
+        if movies.isEmpty {
+            return tableView.dequeueReusableCell(withIdentifier: CellID.NO_MOVIE_CELL) as! NoMovieTableViewCell
+        }
+
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CellID.MOVIE_CELL) as? MovieTableViewCell {
+            cell.setup(for: movies[indexPath.row])
+            return cell
+        }
+
+        return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
