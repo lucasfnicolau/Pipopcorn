@@ -26,11 +26,14 @@ class MoviesViewController: UIViewController {
             text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
         nameTextField.resignFirstResponder()
 
+        let name = text.trimmingCharacters(in: .whitespacesAndNewlines)
+
         movies = []
-        APIHelper.shared.searchMovies(named: text) { result in
+        self.tableView.reloadData()
+        APIHelper.shared.searchMovies(named: name) { result in
             switch result {
                 case .success(let movies):
-                    self.movies = movies
+                    self.movies = movies.filter { $0.type == .movie }
                     self.tableView.reloadData()
                 case .failure(let error):
                     print(error)
@@ -59,7 +62,7 @@ class MoviesViewController: UIViewController {
 extension MoviesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return movies.count > 0 ? movies.count : 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

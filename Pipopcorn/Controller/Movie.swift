@@ -13,9 +13,9 @@ struct Movie: Codable {
     let type: TypeEnum
 
     enum CodingKeys: String, CodingKey {
+        case imdbID
         case title = "Title"
         case year = "Year"
-        case imdbID
         case type = "Type"
         case poster = "Poster"
     }
@@ -23,4 +23,6 @@ struct Movie: Codable {
 
 enum TypeEnum: String, Codable {
     case movie = "movie"
+    case series = "series"
+    case game = "game"
 }
