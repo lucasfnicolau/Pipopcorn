@@ -30,14 +30,26 @@ class MoviesViewController: UIViewController {
 
         movies = []
         self.tableView.reloadData()
-        
-        APIHelper.shared.searchMovies(named: name) { result in
-            switch result {
-            case .success(let movies):
-                self.movies = movies
+        searchMovies(named: name)
+    }
+
+    func formatToQueryString(_ string: String) -> String {
+        return string.components(separatedBy: " ").joined(separator: "%20")
+    }
+
+    func searchMovies(named name: String) {
+        let queryStr = formatToQueryString(name)
+        let fullURL = "\(ENDPOINT)=\(API_KEY)&s=\(queryStr)&type=movie"
+
+        DispatchQueue.main.async {
+            guard let url = URL(string: fullURL),
+                let data = try? Data(contentsOf: url) else { return }
+
+            if let search = try? JSONDecoder().decode(Search.self, from: data) {
+                self.movies = search.movies
                 self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
+            } else {
+                print("Algo deu errado :(")
             }
         }
     }

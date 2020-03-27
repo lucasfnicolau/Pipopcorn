@@ -22,19 +22,21 @@ class DetailsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchMovieDetails()
+        getMovieDetails()
     }
 
-    func fetchMovieDetails() {
+    func getMovieDetails() {
+        let fullURL = "\(ENDPOINT)=\(API_KEY)&i=\(imdbID)"
+
         DispatchQueue.main.async {
-            APIHelper.shared.getMovieDetails(forId: self.imdbID) { result in
-                switch result {
-                case .success(let movieDetails):
-                    self.movieDetails = movieDetails
-                    self.fillTableView()
-                case .failure(let error):
-                    print(error)
-                }
+            guard let url = URL(string: fullURL),
+                let data = try? Data(contentsOf: url) else { return }
+
+            if let movieDetails = try? JSONDecoder().decode(MovieDetails.self, from: data) {
+                self.movieDetails = movieDetails
+                self.fillTableView()
+            } else {
+                print("Algo deu errado :(")
             }
         }
     }
