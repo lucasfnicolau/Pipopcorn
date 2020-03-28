@@ -20,3 +20,10 @@ class Size {
 class Segue {
     static let GO_TO_DETAILS = "GoToDetails"
 }
+
+class Alert {
+    static let TITLE = "OMDb API"
+    static let MESSAGE = "Todos os dados utilizados neste app foram consumidos utilizando a OMDb API"
+    static let CANCEL_ACTION = "Cancelar"
+    static let LICENSE_ACTION = "Licença da API"
+}
