@@ -10,8 +10,6 @@ import UIKit
 
 extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !movies.isEmpty {
-            performSegue(withIdentifier: Segue.GO_TO_DETAILS, sender: nil)
-        }
+        performSegue(withIdentifier: Segue.GO_TO_DETAILS, sender: nil)
     }
 }
