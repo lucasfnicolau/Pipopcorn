@@ -74,10 +74,10 @@ class MoviesViewController: UIViewController {
     }
 
     @IBAction func infoButtonTouched(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "OMDb API", message: "Todos os dados utilizados neste app foram consumidos utilizando a OMDb API", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let alertController = UIAlertController(title: Alert.TITLE, message: Alert.MESSAGE, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: Alert.CANCEL_ACTION, style: .cancel, handler: nil)
 
-        let openLicense = UIAlertAction(title: "Licença da API", style: .default) { _ in
+        let openLicense = UIAlertAction(title: Alert.LICENSE_ACTION, style: .default) { _ in
             if let url = URL(string: "https://www.omdbapi.com/legal.htm") {
                 UIApplication.shared.open(url)
             }
