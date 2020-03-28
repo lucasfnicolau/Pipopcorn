@@ -14,6 +14,7 @@ class NoMovieTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.isUserInteractionEnabled = false
         warningLabel.text = "Escreva o nome de algum filme (em inglês) na barra de busca e clique na lupa para pesquisar :D"
     }
 
