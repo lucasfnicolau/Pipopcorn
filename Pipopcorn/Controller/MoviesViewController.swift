@@ -85,4 +85,11 @@ class MoviesViewController: UIViewController {
 
         navigationController?.present(alertController, animated: true, completion: nil)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailsViewController = segue.destination as? DetailsTableViewController {
+            let selectedRow = tableView.indexPathForSelectedRow?.row ?? 0
+            detailsViewController.imdbID = movies[selectedRow].imdbID
+        }
+    }
 }

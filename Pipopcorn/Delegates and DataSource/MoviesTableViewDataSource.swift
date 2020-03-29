@@ -31,11 +31,4 @@ extension MoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.height * 0.7
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailsViewController = segue.destination as? DetailsTableViewController {
-            let selectedRow = tableView.indexPathForSelectedRow?.row ?? 0
-            detailsViewController.imdbID = movies[selectedRow].imdbID
-        }
-    }
 }
