@@ -25,12 +25,8 @@ class MoviesViewController: UIViewController {
         dismissKeyboard()
         guard let text = nameTextField.text,
             text.trimmingCharacters(in: .whitespacesAndNewlines) != "" else { return }
-
         let name = text.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        movies = []
-        self.tableView.reloadData()
-        
         APIHelper.shared.searchMovies(named: name) { result in
             switch result {
             case .success(let movies):
