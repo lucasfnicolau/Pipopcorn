@@ -25,10 +25,4 @@ class MovieTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
-    func setup(for movie: Movie) {
-        nameLabel.text = movie.title
-        yearLabel.text = movie.year
-        posterImageView.load(url: movie.poster)
-    }
 }

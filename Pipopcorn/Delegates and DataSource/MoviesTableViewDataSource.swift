@@ -21,7 +21,11 @@ extension MoviesViewController: UITableViewDataSource {
         }
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellID.MOVIE_CELL) as? MovieTableViewCell {
-            cell.setup(for: movies[indexPath.row])
+            let movie = movies[indexPath.row]
+            cell.nameLabel.text = movie.title
+            cell.yearLabel.text = movie.year
+            cell.posterImageView.load(url: movie.poster)
+
             return cell
         }
 
